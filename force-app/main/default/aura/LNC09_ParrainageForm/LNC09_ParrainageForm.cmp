@@ -1,0 +1,101 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 06-15-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   06-14-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId"
+                access="global" 
+                controller="LNC09_ParrainageFormController">
+    
+    <aura:attribute name="recordId" type="String" default="{!recordId}"/>
+    <aura:attribute name="username" type="String" default="{!recordId}"/>
+    <aura:attribute name="currentUser" type="User"/>
+    <aura:attribute name="parrainage" type="Parrainage__c" default="{ 'sobjectType': 'Parrainage__c' }"/>
+    <aura:attribute name="showForm" type="Boolean" default="true"/>
+    <aura:attribute name="showSuccess" type="Boolean" default="false"/>
+    <aura:attribute name="showError" type="Boolean" default="false"/>
+    <aura:attribute name="options" type="String[]" description="options" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.initialize}"/>
+    
+    <aura:if isTrue="{!v.showForm}">
+        <div style="margin-left:0px !important; margin-right:0px !important; ">
+    <div class="slds-m-around--xx-large" style="border-top-right-radius: 14px; border-top-left-radius: 14px; border-bottom-right-radius: 14px; border-bottom-left-radius: 14px; background: #ffffff;padding: 3%;">
+        Saisir les informations de l'entreprise filleule<br/><br/>
+        <div class="slds-form--stacked">
+            <div class="slds-form-element">  
+                <div class="slds-form-element__control">
+                    <ui:inputSelect aura:id="leadSalutation" label="Civilité" value="{!v.parrainage.leadSalutation__c}" required="true">
+                         <option value="M.">M.</option>
+        				 <option value="Mme.">Mme.</option>                  
+                    </ui:inputSelect>
+                </div>
+                <div class="slds-form-element__control">
+                    <ui:inputText aura:id="leadFN" label="Prénom" value="{!v.parrainage.leadFirstName__c}" class="slds-input" required="true"/>
+                </div>
+                <div class="slds-form-element__control">
+                    <ui:inputText aura:id="leadLN" label="Nom" value="{!v.parrainage.leadLastName__c}" class="slds-input" required="true"/>
+                </div>
+					<div class="slds-form-element__control" style="margin-top:2%;">
+                        <ui:outputText value="Veuillez saisir un email et/ou un numéro de téléphone valide"  />
+                </div>
+                <div class="slds-form-element__control">
+                    <ui:inputText aura:id="leadEmail" label="Email" value="{!v.parrainage.leadEmail__c}" class="slds-input" />
+                </div>
+                <div class="slds-form-element__control">
+                    <ui:inputPhone aura:id="leadPhone" label="Téléphone" value="{!v.parrainage.leadPhone__c}" class="slds-input" maxlength="10"/>
+                </div>
+                <div class="slds-form-element__control">
+                    <ui:inputText aura:id="leadCompany" label="Entreprise" value="{!v.parrainage.leadCompany__c}" class="slds-input" required="true"/>
+                </div>
+                <div class="slds-form-element__control">
+                    <ui:inputSelect aura:id="leadDept" label="Département du filleul" value="{!v.parrainage.leadDepartementParrainage__c}" required="true">
+                    <!--lightning:select aura:id="leadDept" label="Département du filleul" value="{!v.parrainage.leadDepartementParrainage__c}" required="true"-->
+                        <option value=""></option>
+                        <aura:iteration var="option" items="{!v.options}">
+                            <option value="{!option.value}">{!option.label}</option>
+                        </aura:iteration>
+                    </ui:inputSelect>                    
+                </div>
+                <div class="slds-form-element__control">
+                    <ui:inputSelect aura:id="remerciements" label="Choisissez votre cadeau remerciement" value="{!v.parrainage.R_compense_parrainage__c}"  required="true">
+                        <option value=""></option>
+                        <option value="500€ à déduire du Challenge Exposition Universelle Mars 2022">500€ à déduire du Challenge Exposition Universelle Mars 2022</option>
+        				<option value="Don de 500€ à l'AFM Téléthon">Don de 500€ à l'AFM Téléthon</option>
+                        <option value="Chèque cadeau 250€">Chèque cadeau 250€</option>
+                    </ui:inputSelect>
+                    </div>
+            </div>
+            <div class="slds-m-around--medium">
+                <button class="slds-button slds-button--brand" style="margin-left:auto;margin-right:auto;display: block;" onclick="{!c.validateForm}">&nbsp;&nbsp;&nbsp;Valider parrainage&nbsp;&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </div>
+            </div>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showSuccess}">
+    <div class="slds-notify slds-theme_success" style="padding-bottom:+5%;">
+            <span class="slds-assistive-text">Succes</span>
+            <div class="slds-notify__content">
+                <br/>
+                <p class="slds-align_absolute-center">Votre demande de parrainage a été bien créée.</p>                
+            </div>
+         </div>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showError}">
+    <div class="slds-notify slds-theme_error" style="padding-bottom:+5%;">
+            <span class="slds-assistive-text">Erreur</span>
+            <div class="slds-notify__content">
+                <br/>
+                <p class="slds-align_absolute-center">Une erreur s'est produite lors de la validation de votre demande de parrainage. Veuillez réessayer plus tard.</p>                
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

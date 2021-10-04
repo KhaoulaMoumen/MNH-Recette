@@ -1,0 +1,36 @@
+<aura:component implements="force:hasSObjectName,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" controller="LCCTRL_Action_Update" extends="c.LC_Abstract">
+
+    <aura:registerEvent name="closeModal" type="c:LE_Modal"/>
+
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="sObjectName" type="String" />
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+
+    <div >
+
+        <aura:if isTrue="{!v.isLoading}">
+            <div class="spinnerWrapper">
+                <lightning:spinner size="large" variant="brand"/>
+            </div>
+            <div class="slds-text-heading_medium slds-text-align_center ">
+                {!$Label.c.Action_loading_update}
+            </div>
+        <aura:set attribute="else">
+            <br/>
+            <br/>
+            <div class="slds-text-heading_medium slds-text-align_center ">
+                {!$Label.c.Action_update_confirm}
+            </div>
+            <br/>
+            <br/>
+            <footer class="modal-footer slds-modal__footer">
+                <lightning:button variant="neutral" label="{!$Label.c.Annuler}" onclick="{! c.cancelClick }" />      
+                <lightning:button variant="brand" label="{!$Label.c.ok}" onclick="{! c.saveClick }" />
+            </footer>
+        </aura:set>
+        </aura:if>
+
+    </div>
+        
+
+</aura:component>

@@ -1,0 +1,32 @@
+.bandeau {
+    width: 100%;
+    height: 300px;
+    padding: 50px;
+    box-shadow: inset 0 0 0 100vmax rgba(0, 0, 0, .5);
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    display: inline-grid;
+    background-position: center;
+}
+.titre_bandeau{
+    color: #FFFFFF;
+    font-size: xx-large;
+    text-align: center;
+}
+.sous-titre_bandeau{
+    color: #FFFFFF;
+    font-size: large;
+    text-align: center;
+    margin-top: 10px;
+}
+
+@media (min-width: 48em){
+    .titre_bandeau{
+        font-size: xxx-large;
+    }
+    .sous-titre_bandeau{
+        font-size: x-large;
+    }
+}

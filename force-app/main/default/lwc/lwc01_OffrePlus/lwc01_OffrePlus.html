@@ -1,0 +1,91 @@
+<template>
+
+    <div class="bloc_offre">
+        <span class="bloc_titre">{Tech_Titre_Composant_SC}</span>
+
+        <!-- 1ere ligne -->
+        <template if:true={show1stLine}>
+            <div class="icone_et_texte">
+                <div class="bloc_icone">
+                    <img class="icone" src={offrePlusIcone1} if:true={offrePlusIcone1}/>
+                </div>
+                <div class="bloc_texte">
+                    <lightning-formatted-rich-text
+                        value={offrePlusTxt1}
+                    ></lightning-formatted-rich-text>
+                </div>
+            </div>
+        </template>
+
+        <!-- 2e ligne -->
+        <template if:true={show2ndLine}>
+            <div class="icone_et_texte">
+                <div class="bloc_icone">
+                    <img class="icone" src={offrePlusIcone2} if:true={offrePlusIcone2}/>
+                </div>
+                <div class="bloc_texte">
+                    <lightning-formatted-rich-text
+                        value={offrePlusTxt2}
+                    ></lightning-formatted-rich-text>
+                </div>
+            </div>
+        </template>
+
+        <!-- 3 ligne -->
+        <template if:true={show3rdLine}>
+            <div class="icone_et_texte">
+                <div class="bloc_icone">
+                    <img class="icone" src={offrePlusIcone3} if:true={offrePlusIcone3}/>
+                </div>
+                <div class="bloc_texte">
+                    <lightning-formatted-rich-text
+                        value={offrePlusTxt3}
+                    ></lightning-formatted-rich-text>
+                </div>
+            </div>
+        </template>
+
+        <!-- 4e ligne -->
+        <template if:true={show4thLine}>
+            <div class="icone_et_texte">
+                <div class="bloc_icone">
+                    <img class="icone" src={offrePlusIcone4} if:true={offrePlusIcone4}/>
+                </div>
+                <div class="bloc_texte">
+                    <lightning-formatted-rich-text
+                        value={offrePlusTxt4}
+                    ></lightning-formatted-rich-text>
+                </div>
+            </div>
+        </template>
+
+        <!-- 5e ligne -->
+        <template if:true={show5thLine}>
+            <div class="icone_et_texte">
+                <div class="bloc_icone">
+                    <img class="icone" src={offrePlusIcone5} if:true={offrePlusIcone5}/>
+                </div>
+                <div class="bloc_texte">
+                    <lightning-formatted-rich-text
+                        value={offrePlusTxt5}
+                    ></lightning-formatted-rich-text>
+                </div>
+            </div>
+        </template>
+
+        <!-- 6e ligne -->
+        <template if:true={show6thLine}>
+            <div class="icone_et_texte">
+                <div class="bloc_icone">
+                    <img class="icone" src={offrePlusIcone6} if:true={offrePlusIcone6}/>
+                </div>
+                <div class="bloc_texte">
+                    <lightning-formatted-rich-text
+                        value={offrePlusTxt6}
+                    ></lightning-formatted-rich-text>
+                </div>
+            </div>
+        </template>
+
+    </div>
+</template>

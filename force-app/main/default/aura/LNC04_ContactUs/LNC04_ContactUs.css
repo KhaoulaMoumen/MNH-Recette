@@ -1,0 +1,55 @@
+.THIS body{
+    margin-top:20px;
+    background:#eee;
+}
+
+.THIS .container {
+background: #EC6726 0% 0% no-repeat padding-box;
+border-radius: 12px;
+opacity: 1;
+}
+
+/* CONTACTS */
+.THIS .contact-box {
+    background-color: #ffffff;
+    border: 1px solid #e7eaec;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.THIS .contact-box > a {
+    color: inherit;
+}
+.THIS .contact-box .center-version {
+    border: 1px solid #e7eaec;
+    padding: 0;
+}
+.THIS .contact-box .center-version > a {
+    display: block;
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+.THIS .contact-box .center-version > a img {
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.THIS .contact-box .center-version address {
+    margin-bottom: 0;
+}
+.THIS .contact-box .contact-box-footer {
+    text-align: center;
+    background-color: #ffffff;
+    border-top: 1px solid #e7eaec;
+    padding: 15px 20px;
+}
+.THIS a{
+    text-decoration:none !important;    
+}
+.THIS boxContact {
+    display: block; 
+    padding-left: 20% !important;
+    background-color: #EC6726; 
+    text-align: left;
+}

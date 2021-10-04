@@ -1,0 +1,145 @@
+<aura:component implements="lightning:actionOverride,force:hasSObjectName,force:lightningQuickAction,lightning:isUrlAddressable,lightning:hasPageReference" access="global" controller="LCCTRL_Recherche_Page" extends="c.LC_Abstract">
+	
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="title" type="String"  />
+    <aura:attribute name="isLoading" type="Boolean" default="false" />
+    
+    <aura:attribute name="isAdvencedSearch" type="Boolean" default="false"  />
+    <aura:attribute name="selectedSearch" type="String" default="etablissement"  />
+
+    <aura:attribute name="search" type="Object" />
+    <aura:attribute name="searchEtab" type="Object" />
+    <aura:attribute name="searchAsso" type="Object" />
+
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+
+    <aura:attribute name="nbResult" type="Integer" default="0"/>
+    <aura:attribute name="nbMatch" type="Integer" default="0"/>
+    <aura:attribute name="typeRecherche" type="String" default=""/>
+    
+    <aura:attribute name="buttonLabel" type="String" default=""/>
+
+    <aura:attribute name="doublons" type="List"/>
+    <aura:attribute name="columnsDoublon" type="List"/>
+    <aura:attribute name="titleDoublon" type="String" default=""/>
+
+    <aura:attribute name="siretSelected" type="String" default=""/>
+    
+    <aura:attribute name="typeRechercheOptions" type="List" />
+    <lightning:card title="{!v.title}" iconName="{! v.sObjectName == 'Account' ?'standard:account':'standard:lead'}" >
+        <aura:set attribute="actions">
+            <lightning:input type="toggle" label="{! $Label.c.Recherche_Recherche_avancee}" checked="{!v.isAdvencedSearch}" messageToggleActive=""  messageToggleInactive=""/>
+        </aura:set>
+        <div class="slds-form slds-form_compound slds-p-horizontal_medium" >
+            <aura:if isTrue="{!v.isAdvencedSearch}">
+                    <lightning:tabset selectedTabId="{!v.selectedSearch}">
+                            <lightning:tab label="{!$Label.c.Recherche_Recherche_d_etablissement}" id="etablissement">
+                                <fieldset class="slds-form-element">
+                                        <div class="slds-form-element__group" onkeypress="{!c.keyCheck}">
+                                                <div class="slds-form-element__row">
+                                                        <lightning:radioGroup 
+                                                        name="typeRecherche"
+                                                        label="{! $Label.c.Recherche_Type_de_recherche}"
+                                                        options="{! v.typeRechercheOptions }"
+                                                        value="{! v.searchEtab.typeRecherche }"
+                                                        type="radio"/>
+                                                </div>
+                                                <div class="slds-form-element__row">
+                                                        <div class="slds-form-element slds-size_1-of-4">
+                                                            <lightning:input aura:id="validEtab" label="{!$Label.c.Recherche_Raison_social}" value="{!v.searchEtab.raisonSociale}" />
+                                                        </div>
+                                                        <div class="slds-form-element slds-size_1-of-4">
+                                                            <lightning:input aura:id="validEtab" label="{!$Label.c.Recherche_Enseigne_Sigle}" value="{!v.searchEtab.enseigne}" />
+                                                        </div>
+                                                        <div class="slds-form-element slds-size_1-of-4">
+                                                            <lightning:input aura:id="validEtab" label="{!$Label.c.Recherche_Siren_Siret}" value="{!v.searchEtab.sirent}" />
+                                                        </div>
+                                                        <div class="slds-form-element slds-size_1-of-4">
+                                                            <lightning:input aura:id="validEtab" label="{!$Label.c.Recherche_Numero_RCS}" value="{!v.searchEtab.rcs}" />
+                                                        </div>
+                                                </div>
+                                                <div class="slds-form-element__row">
+                                                        
+                                                        <div class="slds-form-element slds-size_1-of-3">
+                                                            <lightning:input aura:id="validEtab" label="{!$Label.c.Recherche_Nom_de_voie}" value="{!v.searchEtab.rue}" />
+                                                        </div>
+                                                        <div class="slds-form-element slds-size_1-of-3">
+                                                            <lightning:input label="{!$Label.c.Recherche_Code_postal}" value="{!v.searchEtab.codePostal}" />
+                                                        </div>
+                                                        <div class="slds-form-element slds-size_1-of-3">
+                                                            <lightning:input label="{!$Label.c.Recherche_Ville}" value="{!v.searchEtab.ville}" />
+                                                        </div>
+                                                </div>
+                                        </div>
+                                   
+                                </fieldset>
+                            </lightning:tab>
+                            <!--<lightning:tab label="{!$Label.c.Recharche_Recherche_d_association}" id="association">
+                                    <fieldset class="slds-form-element">
+                                            <div class="slds-form-element__group" onkeypress="{!c.keyCheck}" >
+                                                    <div class="slds-form-element__row">
+                                                            <div class="slds-form-element slds-size_1-of-3">
+                                                                <lightning:input aura:id="validAsso" label="{!$Label.c.Recherche_Titre}" value="{!v.searchAsso.titre}" />
+                                                            </div>
+                                                            <div class="slds-form-element slds-size_1-of-3">
+                                                                <lightning:input aura:id="validAsso" label="{!$Label.c.Recherche_N_RNA}" value="{!v.searchAsso.nra}" />
+                                                            </div>
+                                                            <div class="slds-form-element slds-size_1-of-3">
+                                                                <lightning:input label="{!$Label.c.Recherche_Departement}" value="{!v.searchAsso.departement}" />
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                    </fieldset>
+                            </lightning:tab>-->
+                    </lightning:tabset>
+                <aura:set attribute="else">
+                    <fieldset class="slds-form-element">
+                            <div onkeypress="{!c.keyCheck}" class="slds-form-element__group">
+                                <div class="slds-form-element__row">
+                                    <div class="slds-form-element slds-size_1-of-2">
+                                        <lightning:input aura:id="validBasic" placeholder="{!$Label.c.Recherche_placeholder_qui}" label="{!$Label.c.Recherche_Qui}" value="{!v.search.qui}" required="true" />
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-2">
+                                        <lightning:input aura:id="validBasic" placeholder="{!$Label.c.Recherche_placeholder_ou}" label="{!$Label.c.Recherche_Ou}" value="{!v.search.ou}" />
+                                    </div>
+                                </div>
+                            </div>
+                    </fieldset>
+                </aura:set>
+            </aura:if> 
+        </div>
+        <aura:set attribute="footer">
+            <lightning:button title="{!$Label.c.Recherche_Reinitialiser}" label="{!$Label.c.Recherche_Reinitialiser}" iconName="utility:error" iconPosition="left"  variant="neutral" onclick="{!c.handleReset}"/>
+            <lightning:button title="{!$Label.c.Recherche_Rechercher}" label="{!$Label.c.Recherche_Rechercher}" iconName="utility:search" iconPosition="left"  variant="brand" onclick="{!c.handleSearch}"/>
+        </aura:set>
+    </lightning:card>
+    <lightning:card title="{!$Label.c.Resultat_de_recherche}" iconName="standard:search">
+        <lightning:spinner class="{! v.isLoading ?'':'slds-hide'}" alternativeText="Loading" size="large" />
+        <div class="{! and(not(v.isLoading),v.nbMatch > 0) ?'tableWrapper slds-p-horizontal_medium':'slds-hide'}" >
+            <lightning:datatable
+                onrowaction="{!c.handleRowAction}"
+                keyField="siret"
+                data="{! v.data }"
+                columns="{! v.columns }"
+                hideCheckboxColumn="true"/>
+        </div>
+        <aura:set attribute="footer">
+                <span class="{! v.nbMatch == 0 ?'slds-hide':''}">
+                    {! format($Label.c.Recherche_Nombre_resultats,v.nbMatch,v.typeRecherche,v.nbResult) } 
+                </span>
+                <span class="{! v.nbMatch > 0 ?'slds-hide':''}">
+                    {! $Label.c.Recherche_pas_de_resultats }
+                </span>
+        </aura:set>
+    </lightning:card>
+    <c:LC_Dialog_Save aura:id="modalDoublon" size="large" title="{!v.titleDoublon}" saveLabel="{!$Label.c.Recherche_Forcer_la_creation}" cancelLabel="{!$Label.c.Recherche_Abandon_de_creation}" onSave="{!c.handleSaveDoublon}" onCancel="{!c.handleCancelDoublon}">
+        <lightning:datatable
+            onrowaction="{!c.handleRowAction}"
+            keyField="siret"
+            data="{! v.doublons }"
+            columns="{! v.columnsDoublon }"
+            hideCheckboxColumn="true"/>
+    </c:LC_Dialog_Save>
+    
+</aura:component>

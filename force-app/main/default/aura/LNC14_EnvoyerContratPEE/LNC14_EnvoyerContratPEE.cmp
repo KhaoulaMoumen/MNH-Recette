@@ -1,0 +1,13 @@
+<aura:component controller="LNC14_EnvoyerContratController"
+                implements="force:lightningQuickAction,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" >
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="resultMessage" type="string" />
+    <aura:attribute name="docusignpageUrl" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    
+    <div>
+        
+        <p style="font-size : 16px;text-align: center">{!v.resultMessage}</p>
+        
+    </div>
+</aura:component>

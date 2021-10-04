@@ -1,0 +1,37 @@
+@media(max-width:500px){
+    .THIS .responsiveHide{
+        display : none !important;
+    }
+}
+.THIS.Details{
+    padding :5px;
+    font-size:11px;
+    color: #DCDCDC;
+}
+.THIS .slds-card__header{
+    background-color: #F5F5F5;
+    border-radius:5px 5px 0 0;
+    border-style: solid;
+    border-color: #D3D3D3;
+    border-width: thin;
+    height: 60px;
+}
+.THIS .slds-card__body{
+    margin-top: -14px;
+    margin-bottom: 0px;
+    border-style: solid;
+    border-color: #D3D3D3;
+    border-width: thin;
+}
+.THIS.card-padding{
+    position: absolute;
+    margin-top: -30px;
+}
+.THIS .slds-button_full-width {
+    color : #E05511;
+}
+.THIS.fixedbutton {
+    position: fixed !important;
+    bottom: 0px;
+    right: 0px; 
+}

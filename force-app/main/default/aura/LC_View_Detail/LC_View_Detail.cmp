@@ -1,0 +1,146 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName" access="global">
+    <aura:attribute name="sObjectName" type="String" />
+
+   
+        <lightning:recordViewForm recordId="{!v.recordId}" objectApiName="{!v.sObjectName}">
+
+            <div class="slds-section slds-is-open">
+                    <h3 class="slds-section__title slds-theme_shade">
+                        <span class="slds-truncate slds-p-horizontal_small" title="{! $Label.c.Deatil_Information_etablissement }">{! $Label.c.Deatil_Information_etablissement }</span>
+                    </h3>
+                    <div aria-hidden="false" class="slds-section__content slds-p-horizontal_medium">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Name" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="sirenSiret__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Phone" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Siege__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Code_NAF_etablissement__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Libelle_code_NAF_etab__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Etablissement_actif__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Date_creation_etablissement__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Effectif_etablissement__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Adresse__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Complement_adresse__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Code_postal__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="DUNS_Etablissement__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Ville__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="succSiret__c" />
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="slds-section slds-is-open">
+                    <h3 class="slds-section__title slds-theme_shade">
+                        <span class="slds-truncate slds-p-horizontal_small" title="{! $Label.c.Detail_Informations_entreprise }">{! $Label.c.Detail_Informations_entreprise }</span>
+                    </h3>
+                    <div aria-hidden="false" class="slds-section__content slds-p-horizontal_medium">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Name2__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="SIREN__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="capital__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Chiffre_d_affaire__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Effectif_entreprise__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Code_APE__c" />
+                            </div>
+                            <!--<div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Libelle_code_NAF_entreprise__c" />
+                            </div>-->
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Code_forme_juridique__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Procedure_collective__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Entreprise_active__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="companyCreationDate__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="DUNS_Siege__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="No_TVA__c" />
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="slds-section slds-is-open">
+                    <h3 class="slds-section__title slds-theme_shade">
+                        <span class="slds-truncate slds-p-horizontal_small" title="{! $Label.c.Detail_Score_Altares }">{! $Label.c.Detail_Score_Altares }</span>
+                    </h3>
+                    <div aria-hidden="false" class="slds-section__content slds-p-horizontal_medium">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:outputField fieldName="Score_sur_20__c" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:outputField fieldName="Moyenne_Score_secteur__c" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:outputField fieldName="Niveau_de_risque__c" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:outputField fieldName="Encours_preconise__c" />
+                                </div>
+                            </div>
+                    </div>
+            </div>
+            <div class="slds-section slds-is-open">
+                    <h3 class="slds-section__title slds-theme_shade">
+                        <span class="slds-truncate slds-p-horizontal_small" title="{! $Label.c.Detail_Liens_Capitalistiques }">{! $Label.c.Detail_Liens_Capitalistiques }</span>
+                    </h3>
+                    <div aria-hidden="false" class="slds-section__content slds-p-horizontal_medium">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:outputField fieldName="Raison_sociale_tete_groupe__c" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:outputField fieldName="Siren_tete_de_groupe__c" />
+                                </div>
+                            </div>
+                    </div>
+            </div>
+        </lightning:recordViewForm>
+</aura:component>

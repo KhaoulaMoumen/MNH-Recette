@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForRecordHome">
+    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+        <lightning:icon iconName="utility:warning" alternativeText="Warning!" title="Warning" />
+        <ui:outputText  class="slds-text-color_error slds-text-title_bold" value="{!$Label.c.Dataxess_AlertIconMessage}"/>	
+    </div>
+</aura:component>

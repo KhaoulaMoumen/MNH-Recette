@@ -1,0 +1,4 @@
+<aura:component abstract="true" access="global">
+    <c:LC_Toast aura:id="toast"/>
+    {!v.body}
+</aura:component>

@@ -1,0 +1,42 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="LCCTRL_Configuration_Package" extends="c.LC_Abstract">
+	<aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:registerEvent name="toastEvent" type="c:LE_Toast_Event"/>
+
+	<aura:attribute name="title" type="String" default="Package configuration" />
+
+	<aura:attribute name="nbResultReadOnly" default="20" type="Integer"/>
+	<aura:attribute name="synchroReadOnly" type="Object[]" />
+	<aura:attribute name="synchro_dirigeantReadOnly" type="Object[]" />
+	<aura:attribute name="synchro_participationReadOnly" type="Object[]" />
+	<aura:attribute name="synchro_actionaireReadOnly" type="Object[]" />
+
+	<aura:attribute name="nbResult" type="String" default="20" />
+	<aura:attribute name="synchro" type="Object[]" />
+	<aura:attribute name="synchro_dirigeant" type="Object[]" />
+	<aura:attribute name="synchro_participation" type="Object[]" />
+	<aura:attribute name="synchro_actionaire" type="Object[]" />
+
+	<lightning:card title="{!v.title}" iconName="standard:calibration" >
+		<aura:set attribute="actions">
+			<lightning:button label="{! $Label.c.Modifier}" iconName="utility:edit" onclick="{!c.openEditModal}" />
+		</aura:set>
+		<div class="slds-p-horizontal_medium">
+			<lightning:input label="{! $Label.c.Configuration_Nombre_de_resultat_par_recherche}" value="{!v.nbResultReadOnly}" type="number" readonly="true" />
+
+			<c:LC_Configuration_SynchroFieldRule title="{! $Label.c.Configuration_champs_synchroniser_Compte_et_Pistes}" synchro="{!v.synchroReadOnly}" />
+			<c:LC_Configuration_SynchroFieldRule title="{! $Label.c.Configuration_champs_synchroniser_Dirigeants_et_Decideurs}" synchro="{!v.synchro_dirigeantReadOnly}" />
+			<c:LC_Configuration_SynchroFieldRule title="{! $Label.c.Configuration_champs_synchroniser_Participations}" synchro="{!v.synchro_participationReadOnly}" />
+			<c:LC_Configuration_SynchroFieldRule title="{! $Label.c.Configuration_champs_synchroniser_Actionnaires}" synchro="{!v.synchro_actionaireReadOnly}" />
+
+		</div>
+	</lightning:card>
+	<c:LC_Dialog_Save aura:id="modal" title="{!v.title}" onSave="{!c.handleSave}" onCancel="{!c.handleCancel}">
+		<div class="slds-form slds-form_stacked" aura:id="form">
+			<lightning:slider label="{! $Label.c.Configuration_Nombre_de_resultat_par_recherche}" min="20" max="200" step="10" value="{!v.nbResult}" type="range"  />
+			<c:LC_Configuration_SynchroFieldRule title="{! $Label.c.Configuration_champs_synchroniser_Compte_et_Pistes}" synchro="{!v.synchro}" editable="true"/>
+			<c:LC_Configuration_SynchroFieldRule title="{! $Label.c.Configuration_champs_synchroniser_Dirigeants_et_Decideurs}" synchro="{!v.synchro_dirigeant}" editable="true"/>
+			<c:LC_Configuration_SynchroFieldRule title="{! $Label.c.Configuration_champs_synchroniser_Participations}" synchro="{!v.synchro_participation}" editable="true"/>
+			<c:LC_Configuration_SynchroFieldRule title="{! $Label.c.Configuration_champs_synchroniser_Actionnaires}" synchro="{!v.synchro_actionaire}" editable="true"/>
+		</div>
+	</c:LC_Dialog_Save>
+</aura:component>

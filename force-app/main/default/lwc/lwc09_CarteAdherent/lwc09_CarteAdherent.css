@@ -1,0 +1,23 @@
+.photoProfil {
+    position: relative;
+    left: 50%;
+    width: 6rem;
+    height: 6rem;
+    background-color: lightblue;
+    top: 40px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+.userName {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #236296;
+}
+.d-flex {
+    text-align: center;
+    border: 1px solid #236296;
+    margin: 0 25px;
+    border-radius: 25px;
+    padding: 50px;
+}

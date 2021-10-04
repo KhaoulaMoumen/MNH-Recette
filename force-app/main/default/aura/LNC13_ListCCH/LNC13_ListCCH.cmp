@@ -1,0 +1,36 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global"
+                controller="CTRL09_listCCHController">	
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <aura:attribute name="CCHs" type="List"/>
+    <aura:attribute name="userId" type="String" default=""/>
+    <aura:if isTrue="{!not(empty(v.CCHs))}">
+        <lightning:card variant="Narrow" title="Membre des Cercles Confort Habitat"  >
+            <p class="slds-p-horizontal_small">
+                <table class="slds-table slds-table_bordered ">
+                    <thead>
+                        <tr class="slds-text-title_caps slds-text-heading--label">
+                            <th scope="col" class="slds-truncate" title="S.no" style="width: min-content;white-space: pre-wrap;">
+                                <div >Nom</div>
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <aura:iteration items="{!v.CCHs}" var="c" indexVar="count">
+                            <tr class="slds-hint-parent">
+                                <td class="slds-truncate" style="width: min-content;white-space: pre-wrap;">
+                                    <div class="">
+                                        {!c.Cercle_Confort_Habitat__r.Name}                                
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+                
+            </p>
+        </lightning:card> 
+    </aura:if>
+</aura:component>

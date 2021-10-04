@@ -1,0 +1,32 @@
+.bloc_atouts{
+    padding: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+.titre_atouts{
+    font-size: large;
+    font-weight: bold;
+}
+
+.description_atouts{
+    margin-top: 30px ;
+    font-size: medium;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+@media (min-width: 48em){
+    .bloc_atouts {
+        margin-top: 10px;
+    }
+
+    .titre_atouts{
+        font-size: x-large;
+    }
+
+    .description_atouts{
+        width: 90%;
+        margin-top: 15px ;
+        font-size: large;
+    }
+}

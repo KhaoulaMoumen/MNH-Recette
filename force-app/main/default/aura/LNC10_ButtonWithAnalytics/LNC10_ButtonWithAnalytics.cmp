@@ -1,0 +1,11 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId"
+access="global" >
+    <div class="div_profiter_offre_bureau">
+        <center>
+                <span class="label bBody">
+                    <a onclick="{!c.handleClick}" href="/s/contact-partenaire?recordId=a141r00000EFO2jAAH" class="slds-button slds-button--brand  uiButton--none uiButton btn_profiter_offre">
+                    Je profite de l'offre</a>
+                </span>
+        </center>
+    </div>
+</aura:component>

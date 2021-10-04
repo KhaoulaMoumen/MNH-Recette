@@ -1,0 +1,113 @@
+<apex:page showHeader="false" standardStylesheets="true" lightningstylesheets="true">
+    <html lang="fr-FR">
+        <head>
+            <meta charset="UTF-8" />
+            <meta id="vp" name="viewport" content="width=device-width, initial-scale=1" />
+            <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Open+Sans:400,700&display=swap" rel="stylesheet"/>
+            <link href="https://www.synerciel.fr/wp-content/themes/timber-bootstrap-master/modules/app/app.css" rel="stylesheet" />
+            <link rel="shortcut icon" href="https://www.synerciel.fr/wp-content/themes/timber-bootstrap-master/assets/favicon/favicon.ico" type="image/x-icon"/>
+            <link rel="icon" href="https://www.synerciel.fr/wp-content/themes/timber-bootstrap-master/assets/favicon/favicon.ico" type="image/x-icon"/>
+            <title>Synerciel - CGU</title>
+            <meta name="description" content="La présente notice a pour objet de définir les mentions légales et les conditions générales d’utilisation (CGU) du site synerciel.fr." />
+            <meta property="og:url"                content="https://www.synerciel.fr/cgu/" />
+            <meta property="og:title"              content="Synerciel - CGU" />
+            <meta property="og:description"        content="La présente notice a pour objet de définir les mentions légales et les conditions générales d’utilisation (CGU) du site synerciel.fr." />
+            <meta property="og:image"              content="https://www.synerciel.fr/wp-content/themes/timber-bootstrap-master/assets/img/logo_rs_synerciel.jpg" />
+            <link href="https://www.synerciel.fr/wp-content/themes/timber-bootstrap-master/modules/07_texte_brut/07_texte_brut.css" rel="stylesheet" />
+            <link rel='dns-prefetch' href='//s.w.org' />
+            <style type="text/css">
+                img.wp-smiley,
+                img.emoji {
+                display: inline !important;
+                border: none !important;
+                box-shadow: none !important;
+                height: 1em !important;
+                width: 1em !important;
+                margin: 0 .07em !important;
+                vertical-align: -0.1em !important;
+                background: none !important;
+                padding: 0 !important;
+                }
+            </style>
+            <link rel='stylesheet' id='wp-block-library-css'  href='https://www.synerciel.fr/wp-includes/css/dist/block-library/style.min.css?ver=5.3.2' type='text/css' media='all' />
+            <link rel='stylesheet' id='elasticpress-related-posts-block-css'  href='https://www.synerciel.fr/wp-content/plugins/elasticpress/dist/css/related-posts-block-styles.min.css?ver=3.4' type='text/css' media='all' />
+            <link rel='stylesheet' id='elasticpress-facets-css'  href='https://www.synerciel.fr/wp-content/plugins/elasticpress/dist/css/facets-styles.min.css?ver=3.4' type='text/css' media='all' />
+            <script type='text/javascript' src='https://www.synerciel.fr/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+            <script type='text/javascript' src='https://www.synerciel.fr/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+            <link rel='https://api.w.org/' href='https://www.synerciel.fr/wp-json/' />
+            <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.synerciel.fr/xmlrpc.php?rsd" />
+            <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.synerciel.fr/wp-includes/wlwmanifest.xml" /> 
+            <link rel='prev' title='Données RGPD' href='https://www.synerciel.fr/donnees-rgpd/' />
+            <meta name="generator" content="WordPress 5.3.2" />
+            <link rel="canonical" href="https://www.synerciel.fr/cgu/" />
+            <link rel='shortlink' href='https://www.synerciel.fr/?p=388' />
+            <link rel="alternate" type="application/json+oembed" href="https://www.synerciel.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.synerciel.fr%2Fcgu%2F" />
+            <link rel="alternate" type="text/xml+oembed" href="https://www.synerciel.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.synerciel.fr%2Fcgu%2F&#038;format=xml" />
+            <script>
+            document.documentElement.className = document.documentElement.className.replace( 'no-js', 'js' );
+            </script>
+            <style>
+                .no-js img.lazyload { display: none; }
+                figure.wp-block-image img.lazyloading { min-width: 150px; }
+                .lazyload, .lazyloading { opacity: 0; }
+                .lazyloaded {
+                opacity: 1;
+                transition: opacity 400ms;
+                transition-delay: 0ms;
+                }
+            </style>
+            
+        </head>
+        <body class="app 07_texte_brut-template-default single single-07_texte_brut postid-388">
+            <div class="texte_brut">
+                <div class="container-fluid image-header" style="">
+                    <div class="row">
+                        <div class="offset-lg-1 col-lg-15">
+                            <p class="fil"><a href="/">Accueil</a> / Mentions légales APP My Synerciel – ESPACE PRO</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-lg-4 col-lg-8"><br/><br/>
+                            <h1 class="h2-style">Mentions légales APP My Synerciel – ESPACE PRO</h1><br/><br/><br/>
+                            <p class="p-m">La présente notice a pour objet de définir les mentions légales s’appliquant à l’Espace Pro disponible depuis le site <a href="www.synerciel.fr"><u>www.synerciel.fr</u></a> et à l’APP My Synercie</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="offset-lg-3 col-lg-9 content">
+                            <p>L’Espace Pro et l’APP My Synerciel sont la propriété de Synerciel, SAS à capital variable, immatriculée au Registre du commerce et des sociétés de Nanterre, sous le numéro 522 466 572, dont le siège social est situé Tour W, 102 Terrasse Boieldieu, 92800 Puteaux. Tél. : 0 805 85 04 50</p>
+                            
+                            <p>•<strong> Directeur de publication :</strong> Monsieur Ludovic BURG en qualité de Directeur Qualité Système d’Information.</p>
+                            <p>L’Espace Pro et l’APP My Synerciel ont été conçus par la société TALAN.</p>
+                            <p>• <strong>Hébergeur :</strong> SALESFORCE.</p>
+                            <p>L’accès à l’Espace Pro / APP My Synerciel est possible 24 heures sur 24, 7 jours sur 7, sauf en cas de force majeure ou d’un événement hors du contrôle de la société Synerciel et sous réserve des éventuelles pannes et interventions de maintenance nécessaires au bon fonctionnement du site et des matériels. Une interruption pour raison de maintenance technique peut être décidée par Synerciel, qui s’efforcera alors de communiquer préalablement aux utilisateurs les dates et heures de l’intervention.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/iamdustan-smoothscroll/0.4.0/smoothscroll.min.js"></script>
+            <script src="https://www.synerciel.fr/wp-content/themes/timber-bootstrap-master/lib/bootstrap/assets/js/vendor/popper.min.js"></script>
+            <script src="https://www.synerciel.fr/wp-content/themes/timber-bootstrap-master/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="https://www.synerciel.fr/wp-content/themes/timber-bootstrap-master/modules/app/app.js"></script>
+            
+            <script src="https://www.synerciel.fr/wp-content/themes/timber-bootstrap-master/modules/07_texte_brut/07_texte_brut.js"></script>
+            <span style="display:none !important">adipiscing consectetur ut vel, libero consequat. libero ante. risus ut odio</span><script type='text/javascript' src='https://www.synerciel.fr/wp-content/plugins/wp-smushit/app/assets/js/smush-lazy-load.min.js?ver=3.6.3'></script>
+            <script type='text/javascript'>
+            lazySizes.cfg.nativeLoading={setLoadingAttribute:false,disableListeners:{scroll:true}};lazySizes.init();
+            </script>
+            <script type='text/javascript'>
+            /* <![CDATA[ */
+            var Security = {"nonce":"bf7f136412"};
+            /* ]]> */
+            </script>
+            <script type='text/javascript' src='https://www.synerciel.fr/wp-content/themes/timber-bootstrap-master/modules/03_fiche_profil/settings.js'></script>
+            <script type='text/javascript' src='https://www.synerciel.fr/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+            <script type='text/javascript' src='https://www.synerciel.fr/wp-content/plugins/elasticpress/dist/js/facets-script.min.js?ver=3.4'></script>
+            <script type='text/javascript' src='https://www.synerciel.fr/wp-includes/js/wp-embed.min.js?ver=5.3.2'></script>
+            
+        </body>
+    </html>o
+</apex:page>

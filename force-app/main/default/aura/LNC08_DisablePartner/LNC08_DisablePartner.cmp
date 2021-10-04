@@ -1,0 +1,6 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,force:hasRecordId">
+
+    <aura:attribute name="recordId" type="Id"/>
+	<c:lwc12_DesactiverPartenaire recordId="{!v.recordId}" onclose="{!c.closeQA}" name="Activer partenaire"/> 
+    
+</aura:component>

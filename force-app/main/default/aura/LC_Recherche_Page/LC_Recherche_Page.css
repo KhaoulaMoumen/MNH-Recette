@@ -1,0 +1,16 @@
+.THIS .tableWrapper {
+    min-height: 80px
+}
+
+.THIS lightning-primitive-header-actions{
+    display: none;
+}
+
+.THIS .slds-th__action.slds-text-link_reset{
+    cursor: default;
+}
+
+.THIS .slds-form_compound .slds-form-element .slds-radio {
+    display: inline-block;
+    margin-left:2em;
+}

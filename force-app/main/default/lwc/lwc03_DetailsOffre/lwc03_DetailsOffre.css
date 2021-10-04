@@ -1,0 +1,11 @@
+.bloc_details{
+    padding: 30px;
+    width: 90%;
+}
+.titre_details{
+    font-size: x-large;
+    font-weight: bold;
+}
+.description_details{
+    margin-top: 30px ;
+}

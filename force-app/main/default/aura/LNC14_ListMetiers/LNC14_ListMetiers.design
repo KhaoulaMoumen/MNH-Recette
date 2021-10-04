@@ -1,0 +1,4 @@
+<design:component>
+    <design:attribute name="userId" label="userId" description="" />
+
+</design:component>

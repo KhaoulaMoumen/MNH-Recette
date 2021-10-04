@@ -1,0 +1,6 @@
+<apex:page standardController="Account" tabStyle="Account" recordSetVar="Allaccounts" lightningstylesheets="true">
+    <!--Runs the flow-->
+    <flow:interview name="MassCreateOffrePSH" finishLocation="{!URLFOR($Action.Account.Tab, $ObjectType.Account)}">
+        <apex:param name="ListeAdherents" value="{!Selected}"/>
+    </flow:interview>
+</apex:page>

@@ -1,0 +1,12 @@
+<apex:page standardController="Offre_PSH__c" showHeader="true"
+extensions="SDAddToMassMerge"
+recordSetVar="selected"
+action="{!createMassMergeJobs}" lightningstylesheets="true">
+  <div style="display:none;">
+    <apex:pageBlock >
+      <apex:pageBlockTable value="{!selected}" var="r">
+        <apex:column value="{!r.Id}" />
+      </apex:pageBlockTable>
+    </apex:pageBlock>
+  </div>
+</apex:page>

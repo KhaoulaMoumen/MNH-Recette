@@ -1,0 +1,6 @@
+<apex:page standardController="Account" showHeader="false">
+
+        <H3 style="color:red; font-size:18px">Critères qualité Synerciel manquants</H3>
+        <p style="color:red; font-size:12px">{!Account.Criteres_qualite_manquants__c}</p>
+
+    </apex:page>

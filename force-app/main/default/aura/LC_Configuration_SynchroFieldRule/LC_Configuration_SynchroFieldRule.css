@@ -1,0 +1,20 @@
+.THIS .title {
+    width: 220px;
+    line-height: 24px;
+}
+
+.THIS .value {
+    width: 130px;
+}
+
+.THIS .green  svg{
+    fill: rgb(75, 202, 129)
+}
+
+.THIS .hoverTint{
+    transition: all 0.2s ease;
+}
+
+.THIS .hoverTint:hover{
+    background-color: rgb(250, 250, 249);
+}

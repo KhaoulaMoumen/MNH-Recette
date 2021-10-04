@@ -1,0 +1,19 @@
+<apex:page controller="VFCTRL_Update_Button">
+
+  <apex:includeLightning />
+  <apex:includeScript value="/lightning/lightning.out.js" />
+  <apex:slds />
+  <div id="lightning" />  
+  <script>
+     onload = function() {
+        $Lightning.use("IWS_ALTARES:LA_ClassicWrapper", function () {
+            $Lightning.createComponent("IWS_ALTARES:LC_Panel_Update",{
+                'sObjectName': '{!sObjectName}',
+                'recordId': '{!recordId}'
+            },"lightning", function(component){
+            });
+        });
+    }
+  </script>
+
+</apex:page>

@@ -1,0 +1,37 @@
+<template>
+    <div class="bloc_offre">
+    <span class="titre_offre">Pour profiter de l’offre</span>
+    <br/>
+    <div class="description_offre">
+        <lightning-formatted-rich-text
+            value={descriptionOffre}
+        ></lightning-formatted-rich-text>
+    </div>
+    
+    </div>
+        <template if:true={showInfoContact}>
+    <div class="bloc_contact">
+    <!--<span class="titre_contact">Vos contacts</span>
+    <br/>-->
+    
+    <div class="infos_contact">
+    
+        <div>
+            <img src={logo}  alt="Logo Partenaire" style="width:400px !important; display: none;" /> 
+        </div>
+    
+        <div class="div_separation">
+            <span class="vertical-line"></span>
+        </div>
+    
+        <div class="detail_contact">
+        <div style="color:rgb(236,103,38);">{nomContact}</div>
+        <a href={linkTelContact} style="color:rgb(255,255,255)">{telContact}</a><br/>
+        <a href={linkEmailContact} style="color:rgb(255,255,255)">{emailContact}</a><br/>
+        <a href={linkWebContact} style="color:rgb(255,255,255)">{linkWebContact}</a>
+    </div>
+    
+    </div>
+    </div>
+        </template>
+    </template>

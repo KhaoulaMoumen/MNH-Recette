@@ -1,0 +1,108 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+  <ltng:require styles= "{!$Resource.CEP_footer + '/footer/footer.css'}"  afterScriptsLoaded="{!c.initialize}" />
+  
+    <div class="page-footer font-small indigo">
+
+  <!-- Footer Links -->
+  <div class="container text-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 mx-auto order-1 order-md-1">
+
+        <!-- Links -->
+          <a class="footer-brand mt-3" href="https://www.synerciel.fr"><img src="{!$Resource.CEP_footer + '/footer/assets/logo_synerciel.svg'}" alt="Logo Synerciel"/></a>
+          <br/>
+        <ul class="footer-text list-unstyled mt-4 mb-0">
+            <br/>
+                            <li class="">
+                <a href="/s/contactsupport">Contactez-nous</a>
+            </li>
+            <br/>
+                        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-none"/>
+
+      <!-- Grid column -->
+      <div class="col-md-4 mx-auto order-3 order-md-2">
+
+        <!-- Links -->
+        <h5 class="footer-text mt-3 mb-4 d-none d-md-block">Légal</h5>
+
+        <ul class="list-unstyled">
+                            <li class="mb-3 mb-md-1" style="margin-bottom:3% !important;">
+                                <a class="grey-link" href="/s/mentions-legales">Mentions légales</a>  
+            </li>
+                            <li class="mb-3 mb-md-1" style="margin-bottom:3% !important;">
+                <a class="grey-link" href="/s/cgu">Données RGPD</a>
+            </li>
+                            <li class="mb-3 mb-md-1">
+                                <a class="grey-link" href="/s/cgu">CGU</a>
+            </li>
+                        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-none"/>
+       
+      <!-- Grid column -->
+      <div class="col-md-4 mx-auto order-2 order-md-3">
+
+        <!-- Links -->
+          <h5 class="footer-text mt-3 mb-4 d-none d-md-block" ><a href="https://www.synerciel.fr/blog/">Blog</a></h5>
+			<ul class="list-unstyled">
+            <li class="mb-3 mb-md-1">
+                <h5 class="footer-text mt-3 mb-4 d-none d-md-block" >Suivez-nous sur les réseaux</h5>
+            </li>
+            <li class="mb-3 mb-md-1">
+                <div class="rs">
+                    <a href="https://www.linkedin.com/company/synerciel/?originalSubdomain=fr" target="_blank"><img src="{!$Resource.CEP_footer + '/footer/assets/linkedin.svg'}"/></a>
+                    <a href="https://www.youtube.com/user/SynercielTV" target="_blank"><img src="{!$Resource.CEP_footer + '/footer/assets/youtube.svg'}"/></a>
+                    <a href="https://www.instagram.com/synerciel_renovons_durablement/" target="_blank"><img src="{!$Resource.CEP_footer + '/footer/assets/instagram.svg'}"/></a>
+                    <a href="https://www.facebook.com/Synerciel/" target="_blank"><img src="{!$Resource.CEP_footer + '/footer/assets/facebook.svg'}"/></a>
+                </div>
+            </li>
+          </ul>
+         
+      </div>
+         
+      <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-none"/>
+
+      <!-- Grid column -->
+      <div class="col-md-4 mx-auto order-4 order-md-4">
+
+        <!-- Links -->
+        <h5 class="footer-text mt-3 mb-4" style="display: none;">Recevez chaque semaine nos dernières actualités</h5>
+        <div class="form-group" style="display: none;">
+            <input type="email" class="form-control" id="email_newsletter" placeholder="Votre mail"/>
+            <button type="button" name="send" id="btn_newsletter">
+                <img data-src="{!$Resource.CEP_footer + '/footer/assets/right_white_arrow.svg'}" class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                <img src="{!$Resource.CEP_footer + '/footer/assets/right_white_arrow.svg'}"/></button>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3 container">
+  </div>
+  <!-- Copyright -->
+
+</div>
+
+
+</aura:component>

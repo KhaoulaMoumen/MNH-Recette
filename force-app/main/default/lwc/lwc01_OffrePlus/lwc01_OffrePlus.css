@@ -1,0 +1,42 @@
+.bloc_offre{
+    background-color: #0e1c63;
+    border: 1px;
+    border-radius: 10px;
+    width: 100%;
+    padding: 30px;
+    margin: 0 auto;
+}
+.bloc_titre {
+    color: #ec6726;
+    font-size: x-large;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.bloc_texte{
+    /*color: #FFFFFF;*/
+    /*font-weight: normal;*/
+    display:inline;
+}
+.icone {
+    min-width: 65px;
+    max-height: 65px !important;
+}
+.bloc_icone{
+    margin-right: 15px;
+}
+.icone_et_texte{
+    display: flex;
+    margin-bottom: 35px;
+}
+
+@media (min-width: 48em){
+    .bloc_offre {
+        width: 90%;
+    }
+    .bloc_titre {
+        font-size: xx-large;
+    }
+}

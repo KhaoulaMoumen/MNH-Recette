@@ -1,0 +1,9 @@
+<apex:page standardController="Offre_PSH__c" recordSetVar="Alloffrepsh" extensions="SendToDocuSignOffrePSHController" lightningstylesheets="true">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:commandButton styleClass="slds-button slds-button_outline-brand" action="{!Prev}" value="Précédent"/>
+            <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!SendDataToDocusign}" value="Envoyer les mandats"/>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:pageMessages />  
+</apex:page>

@@ -1,0 +1,13 @@
+.div_logo {
+    max-width: 80%;
+    margin: 0 auto;
+    /*position: absolute;
+    top: 1px;*/
+}
+
+@media (min-width: 48em){
+    .div_logo {
+        /*position: relative;
+        top: 0;*/
+    }
+}

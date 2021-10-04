@@ -1,0 +1,83 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CTRL06_UserProfile">
+    
+    <ltng:require styles="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />    
+    
+    <aura:attribute name="recordId" type="String" default="{!recordId}"/>
+    <aura:attribute name="proprietaire" type="User" />
+    <aura:attribute name="respPart" type="User" />
+    <aura:attribute name="proprietaireMPH" type="String" />
+    <aura:attribute name="proprietairePH" type="String" />
+    <aura:attribute name="respPartMPH" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <div style="width:90%; margin : 5%;padding: 6%; background: #EC6726 0% 0% no-repeat padding-box;border-top-right-radius:14px;border-top-left-radius:14px;border-bottom-right-radius:14px;border-bottom-left-radius:14px;">
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-3">
+                    
+                    <aura:if isTrue="{! v.respPart == null }">
+                        <div class="boxContact" style="color: inherit;border-top-right-radius:14px;border-top-left-radius:14px;">
+                            <aura:if isTrue="{!v.proprietaire!=null}">
+                                <div class="font-bold boxContact" style="color:#FFFFFF;font-size:16px;">Votre interlocuteur commercial</div><br/>
+                                <div class="m-t-xs" style="font-size:13px;"><strong>{!v.proprietaire.FirstName}&nbsp;{!v.proprietaire.LastName} </strong></div>
+                                <div class="m-t-xs" style="color:#FFFFFF;font-size:13px;"><strong>{!v.proprietaire.Title}</strong></div>
+                            </aura:if>
+                        </div>
+                        <aura:if isTrue="{!v.proprietaire!=null}">
+                            <div class="boxContact">
+                                <div class="m-t-xs btn-group"  style="color:#FFFFFF;font-size:13px;">
+                                    <aura:if isTrue="{!v.proprietaire.MobilePhone!=null}">
+                                        <a class="btn btn-xs btn-white" href="{! 'tel:'+ v.proprietaireMPH}"  style="color:#FFFFFF;font-size:13px;"><i class="fa fa-phone"></i> &nbsp;{!v.proprietaire.MobilePhone}  </a><br/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.proprietaire.Phone!=nul}">
+                                        <a class="btn btn-xs btn-white" href="{! 'tel:'+ v.proprietairePH}"  style="color:#FFFFFF;font-size:13px;"><i class="fa fa-phone"></i> &nbsp;{!v.proprietaire.Phone}  </a><br/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.proprietaire.Email!=null}">
+                                        <a class="btn btn-xs btn-white" href="{! 'mailto:' + v.proprietaire.Email}" style="font-size:13px;color:#257cc0;"><i class="fa fa-envelope"></i><u>&nbsp;{!v.proprietaire.Email}</u></a><br/><br/>
+                                    </aura:if>
+                                </div>
+                            </div>
+                        </aura:if> 
+                    </aura:if> 
+                    
+                    <aura:if isTrue="{! v.respPart != null }">
+                        <div class="boxContact" style="color: inherit; border-top-right-radius:14px;border-top-left-radius:14px;">
+                            <div class="font-bold" style="color:#FFFFFF;font-size:16px;">Votre interlocuteur commercial</div><br/>
+                            <div class="m-t-xs" style="font-size:13px;"><strong>{!v.respPart.FirstName}&nbsp;{!v.respPart.LastName} </strong></div>
+                            <div class="m-t-xs"  style="color:#FFFFFF;font-size:13px;"><strong>Responsable Partenariat</strong></div>
+                        </div>
+                        <div class="boxContact">
+                            <div class="m-t-xs btn-group"  style="color:#FFFFFF;font-size:13px;">
+                                <aura:if isTrue="{!v.respPart.MobilePhone!=null}">
+                                    <a class="btn btn-xs btn-white" href="{! 'tel:'+ v.respPartMPH}" style="color:#FFFFFF;font-size:13px;"><i class="fa fa-phone"></i>&nbsp;{!v.respPart.MobilePhone}  </a><br/>
+                                </aura:if>
+                                <aura:if isTrue="{!v.respPart.Email!=null}">
+                                    <a class="btn btn-xs btn-white" href="{! 'mailto:' + v.respPart.Email}" style="font-size:13px;color:#257cc0;"><i class="fa fa-envelope"></i><u>&nbsp;{!v.respPart.Email}</u></a><br/><br/>
+                                </aura:if>
+                            </div>
+                        </div>
+                    </aura:if>
+                    <div class="boxContact" ><br/>
+                        <div class="font-bold" style="color:#FFFFFF;font-size:16px;">Synerciel - Service Administratif</div> <br/>
+                        <address class="m-t-xs" style="color:#FFFFFF;font-size:13px;">
+                            Synerciel - Service Administratif<br/>
+                            21 avenue de Cambridge,<br/>
+                            14200 HEROUVILLE SAINT CLAIR <br/><br/>
+                        </address>
+                    </div>
+                    <div class="boxContact">
+                        <div class="m-t-xs btn-group"  style="color:#FFFFFF;font-size:13px;">
+                            <a class="btn btn-xs btn-white" href="tel:+33805850450" style="color:#FFFFFF;font-size:13px;"><i class="fa fa-phone"></i>&nbsp;0 805 850 450</a><br/>
+                            <a class="btn btn-xs btn-white" href="mailto:administratif@synerciel.fr" style="font-size:13px;color:#257cc0;"><i class="fa fa-envelope"></i> <u>&nbsp;administratif@synerciel.fr</u> </a><br/><br/>
+                        </div>
+                    </div>
+                    <div style="padding: 20px; color: inherit; text-align: center;border-bottom-right-radius:14px;border-bottom-left-radius:14px; ">
+                        <h3 class="m-b-xs" style="color:#FFFFFF;font-size:14px;"><strong> Du lundi au vendredi </strong></h3>
+                        <div class="font-bold" style="color:#FFFFFF;font-size:14px;">09h - 18h</div>   
+                    </div>
+                    
+                </div>
+            </div>
+        </div> 
+    </div>
+</aura:component>

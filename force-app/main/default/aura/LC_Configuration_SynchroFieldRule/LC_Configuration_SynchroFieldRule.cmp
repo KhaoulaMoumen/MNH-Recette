@@ -1,0 +1,47 @@
+<aura:component access="global">
+
+    <aura:attribute name="title" type="String"  />
+    <aura:attribute name="editable" type="Boolean" default="false" />
+    <aura:attribute name="synchro" type="Object[]" />
+    <div class="slds-section slds-is-open">
+        <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="{! v.title }">{! v.title }</span>
+        </h3>
+        <div aria-hidden="false" class="slds-section__content slds-p-horizontal_medium">
+            <aura:iteration items="{! v.synchro }" var="sync">
+                    <ul class="slds-list_horizontal slds-has-inline-block-links_space hoverTint">
+                        <li class="title">{!sync.MasterLabel}</li>
+                        <li class="value">
+                            <aura:if isTrue="{! v.editable }" >
+                                <lightning:input disabled="{!sync.Required}" type="checkbox" label="{! $Label.c.Creation}" checked="{! sync.Creation}" />
+                            <aura:set attribute="else">
+                                    {! $Label.c.Creation} : 
+                                    <aura:if isTrue="{! sync.Creation}" >
+                                            <lightning:icon class="green" iconName="utility:check" variant="success" size="small"/>
+                                    <aura:set attribute="else">
+                                            <lightning:icon iconName="utility:error" variant="error" size="small"/>
+                                    </aura:set>
+                                    </aura:if>
+                            </aura:set>
+                            </aura:if>
+                        </li>
+                        <li class="value">
+                            <aura:if isTrue="{! v.editable }" >
+                                <lightning:input type="checkbox" label="{! $Label.c.Mise_a_jour}" checked="{! sync.Mise_a_jour}" />
+                            <aura:set attribute="else">
+                                {! $Label.c.Mise_a_jour} : 
+                                <aura:if isTrue="{! sync.Mise_a_jour}" >
+                                    <lightning:icon class="green" iconName="utility:check" variant="success" size="small"/>
+                                <aura:set attribute="else">
+                                    <lightning:icon iconName="utility:error" variant="error" size="small"/>
+                                </aura:set>
+                                </aura:if>
+                            </aura:set>
+                        </aura:if>
+                        </li>
+                    </ul>
+            </aura:iteration>
+        </div>
+    </div>
+
+</aura:component>

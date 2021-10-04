@@ -1,0 +1,9 @@
+<apex:page standardController="Opportunity" recordSetVar="Allopportunities" extensions="SendToDocuSignController" lightningstylesheets="true">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:commandButton styleClass="slds-button slds-button_outline-brand" action="{!Prev}" value="Précédent"/>
+            <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!SendDataToDocusign}" value="Envoyer les reconventionnements"/>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:pageMessages />  
+</apex:page>

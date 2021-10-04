@@ -1,0 +1,37 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="toasts" type="List" />
+    <aura:method name="addToast" action="{!c.addToast}" access="global">
+            <aura:attribute name="message" type="String"/>
+            <aura:attribute name="type" type="String"/>
+            <aura:attribute name="duration" type="Integer"/>
+    </aura:method>
+
+    <aura:handler event="c:LE_Toast_Event" includeFacets="true" action="{!c.addToast}" />
+    <div>
+        <aura:iteration items="{!v.toasts}" var="toast">
+            <div class="slds-notify_container">
+                <div class="{! 'slds-notify slds-notify_toast slds-theme_' + toast.type}" data-key="{!toast.key}" role="alert">
+                     <lightning:icon
+                     class="{!'slds-icon_container slds-m-right_small slds-no-flex slds-align-top slds-icon-utility-' + toast.type}"
+                      iconName="{! 'utility:' + toast.type}" 
+                      size="small" 
+                      variant="inverse"
+                      />
+                    <div class="slds-notify__content">
+                        <h2 class="slds-text-heading_small ">{#toast.message}</h2>
+                    </div>
+                    <lightning:buttonIcon 
+                        name="{!toast.key}"
+                        iconName="utility:close" 
+                        iconClass="slds-button__icon_large"
+                        class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse"
+                        size="small" 
+                        onclick="{!c.closeToast}" 
+                        variant="container"
+                    />
+                </div>
+            </div>
+        </aura:iteration>
+    </div>
+
+</aura:component>

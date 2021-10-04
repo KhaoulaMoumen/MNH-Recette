@@ -1,0 +1,35 @@
+<aura:component extensible="true" access="global">
+
+    <aura:attribute name="size"  type="String" default="small" access="global"/>
+
+    <aura:attribute name="title"  type="String" access="global"></aura:attribute>
+    <aura:attribute name="isClosable"  type="Boolean" default="true" access="global"></aura:attribute>
+    <aura:attribute name="actions"  type="aura.component[]" access="global"></aura:attribute>
+    <aura:attribute name="body"  type="aura.component[]" access="global"></aura:attribute>
+
+    <aura:method name="show" action="{!c.show}" access="global" />
+    <aura:method name="hide" action="{!c.hide}" access="global" />
+
+    <c:LC_Modal aura:id="modal" size="{!v.size}">
+        <header class="{! not(empty(v.title))?'slds-modal__header':'slds-is-relative'}">
+            <aura:if isTrue="{!v.isClosable}">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="{! $Label.c.Fermer}"  onclick="{! c.hide }">
+                    <lightning:icon iconName="utility:close" variant="inverse" ></lightning:icon>
+                    <span class="slds-assistive-text">{! $Label.c.Fermer}</span>
+                </button>
+            </aura:if>
+            <aura:if isTrue="{! not(empty(v.title))}">
+                    <h2 class="slds-text-heading_medium slds-hyphenate">{!v.title}</h2>
+            </aura:if>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium">
+            {!v.body}
+        </div>
+        <aura:if isTrue="{!v.actions.length > 0}">
+            <footer class="slds-modal__footer" aura:id="footer">
+                {!v.actions}
+            </footer>
+        </aura:if>
+    </c:LC_Modal>
+
+</aura:component>

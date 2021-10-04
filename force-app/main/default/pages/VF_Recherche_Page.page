@@ -1,0 +1,18 @@
+<apex:page controller="VFCTRL_Recherche_Page">
+
+  <apex:includeLightning />
+  <apex:includeScript value="/lightning/lightning.out.js" />
+  <apex:slds />
+    
+  <div id="lightning" />  
+  <script>
+     onload = function() {
+            $Lightning.use("IWS_ALTARES:LA_ClassicWrapper", function () {
+                $Lightning.createComponent("IWS_ALTARES:LC_Recherche_Page",{
+                  'sObjectName':'{!sObjectName}'
+                },"lightning", function(component){
+                });
+            });
+        }
+  </script>
+</apex:page>

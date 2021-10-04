@@ -1,0 +1,12 @@
+<apex:page >
+	<apex:includeLightning />
+    <div id="lightning"/>
+    <script>
+        onload = function() {
+            $Lightning.use("IWS_ALTARES:LA_ClassicWrapper", function () {
+                $Lightning.createComponent("IWS_ALTARES:LC_Configuration_Wrapper",{},"lightning", function(component){
+                });
+            });
+        }
+    </script>
+</apex:page>

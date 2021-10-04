@@ -1,0 +1,15 @@
+.THIS .spinnerWrapper{
+    height:100px;
+    position: relative;
+}
+
+.THIS{
+    position: relative;
+}
+
+.THIS footer{
+    margin: 0 -30px;
+    width: 111%;
+    position: absolute;
+    bottom: -132px;
+}

@@ -1,0 +1,34 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="LCCTRL_Configuration_WS" extends="c.LC_Abstract" >
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <aura:attribute name="refClientReadOnly" type="String" default="" />
+    <aura:attribute name="loginReadOnly" type="String" default="" />
+    <aura:attribute name="passwordReadOnly" type="String" default="" />
+
+    <aura:attribute name="refClient" type="String" default="" />
+    <aura:attribute name="login" type="String" default="" />
+    <aura:attribute name="password" type="String" default="" />
+    
+    <aura:attribute name="title" type="String" default="Intuiz API Configuration" />
+
+	<lightning:card title="{!v.title}" iconName="standard:environment_hub" >
+        <aura:set attribute="actions">
+            <lightning:button label="{! $Label.c.Modifier}" iconName="utility:edit" onclick="{!c.openEditModal}" />
+        </aura:set>
+        <div class="slds-p-horizontal_medium">
+            <div class="slds-form slds-form_stacked">
+                <lightning:input label="{! $Label.c.Configuration_RefClient}" value="{!v.refClientReadOnly}" type="text" readonly="true" />
+                <lightning:input label="{! $Label.c.Configuration_Login}" value="{!v.loginReadOnly}" type="text" readonly="true" />
+                <lightning:input label="{! $Label.c.Configuration_Mot_de_passe}" value="{!v.passwordReadOnly}" type="password" readonly="true" />
+            </div>
+        </div>
+    </lightning:card>
+    <c:LC_Dialog_Save aura:id="modal" title="{!v.title}" onSave="{!c.handleSave}" onCancel="{!c.handleCancel}">
+        <div class="slds-form slds-form_stacked" aura:id="form">
+            <lightning:input label="{! $Label.c.Configuration_RefClient}" value="{!v.refClient}" type="text" required="true" />
+            <lightning:input label="{! $Label.c.Configuration_Login}" value="{!v.login}" type="text" required="true" />
+            <lightning:input label="{! $Label.c.Configuration_Mot_de_passe}" value="{!v.password}" type="password" required="true" />
+        </div>
+    </c:LC_Dialog_Save>
+</aura:component>

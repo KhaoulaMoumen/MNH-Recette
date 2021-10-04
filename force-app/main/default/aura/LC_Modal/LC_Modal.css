@@ -1,0 +1,15 @@
+.THIS.slds-modal{
+    display: none;
+}
+
+.THIS.slds-modal.slds-fade-in-open{
+    display: block;
+}
+
+.THIS.slds-backdrop{
+    display: none;
+}
+
+.THIS.slds-backdrop.slds-backdrop_open{
+    display: block;
+}

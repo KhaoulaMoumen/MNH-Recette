@@ -1,0 +1,49 @@
+<template>
+    <template if:true={showQRCode}>
+    <img class="photoProfil" src={photoURL}/>        
+    <div class="d-flex flex-column">
+        <template if:true={boxAdherent}><span>Ma carte adhérent</span></template>
+        <template if:true={boxClient}><span>Ma carte avantages</span></template>
+        <p class="userName">{userName}</p>
+        <p>{metierPrincipal}</p>
+        <p>{nomEnseigne}</p>
+        <div class="p-2" style="text-align:center;margin-bottom:1%;">
+            <lightning-helptext content="Scannez moi" icon-name="utility:cases"  size="large" ></lightning-helptext>
+            <lightning-helptext content="Si vous ne pouvez pas scanner le QR code, veuillez cliquer sur le bouton 'Partager' 
+                et renseigner votre adresse e-mail, vous allez recevoir un e-mail avec un lien de vérification."></lightning-helptext>
+        </div>
+        <div class="p-2">
+                <img src={qrCodeURL}  style="width:auto;"/><br/><br/>
+        </div>
+        
+            <div class="p-2">
+                <template if:true={showButton}>
+                    <lightning-button variant="brand" label="Partager" icon-position="left" onclick={share} > 
+                    </lightning-button>                       
+                </template>
+        </div>
+        <br/>
+        <p>{todayDate}</p>
+        
+       
+        <template if:true={showBox}>
+            <div class="p-2"  style="border: 2px solid #ec6726; border-radius: 25px;padding:5%;text-align:center;margin-left:2%;margin-right:2%;">
+                <lightning-input type="email"
+                                    label="Adresse e-mail"
+                                    onchange={handleEmailAddress}
+                                    required>
+                </lightning-input>
+                <br/>
+                <lightning-button variant="brand" label="Partager" icon-position="left" onclick={sendEmail} ></lightning-button> &nbsp;     
+                <lightning-button variant="Neutral" label="Fermer" icon-position="left" onclick={closeBox} ></lightning-button>    
+            </div>
+        </template>
+    </div>
+    </template>
+
+    <template if:false={showQRCode}>
+        <div class="d-flex flex-column" style="text-align:center;margin-top:2%;">
+            Impossible d'afficher le QR Code car vous n'êtes pas relié à un compte.
+        </div>
+    </template>
+</template>

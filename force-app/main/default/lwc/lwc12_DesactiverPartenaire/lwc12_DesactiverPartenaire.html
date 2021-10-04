@@ -1,0 +1,11 @@
+<template>
+    <lightning-card >
+        <h3 slot="title">
+            <center>Désactivation du partenaire</center>
+        </h3>
+        <div if:true={loading} style="position:relative;padding-top:20%" >
+            <lightning-spinner alternative-text="désactivation du partenaire en cours" variant="brand" size="large"></lightning-spinner>
+            <h2 style="text-align:center">Désactivation du partenaire en cours ...</h2>
+        </div>
+    </lightning-card>
+</template>

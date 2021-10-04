@@ -1,0 +1,357 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-18-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   05-18-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId"
+                access="global"
+                controller="CTRL07_SearchController">   
+    <ltng:require styles="/resource/SLDS/assets/styles/salesforce-lightning-design-system.min.css" />
+    
+    <!-- CREATE ATTRIBUTE/VARIABLE-->
+    <aura:attribute name="recordId" type="String" default="{!recordId}"/>
+    <aura:attribute name="redirect" type="boolean" default="false"/>
+    <aura:attribute name="user" type="Object" />
+    <aura:attribute name="username" type="String" default=""/>
+    <aura:attribute name="currentUser" type="User"/>
+    <aura:attribute name="name" type="String" default="" />
+    <aura:attribute name="city" type="String" default=""  />
+    <aura:attribute name="metier" type="String" default=""  />
+    <aura:attribute name="departement" type="String" default=""  />
+    <aura:attribute name="societe" type="String" default=""  />
+    <aura:attribute name="searchResult" type="List" description="use for store and display account list return from server"/>
+    <aura:attribute name="searchKeyword" type="String" description="use for store user search input"/>
+    <aura:attribute name="Message" type="boolean" default="false" description="use for display no record found message"/>
+    <aura:attribute name="MessageEmpty" type="boolean" default="false" description="use for display empty critere"/>
+    <aura:attribute name="TotalNumberOfRecord" type="integer" default="0" description="use for display Number of records"/>
+    <aura:attribute name="isOpen" type="boolean" default="true"  />
+    <aura:attribute name="listMetier" type="List"   />
+    <aura:attribute name="url" type="String"   />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <lightning:navigation aura:id="navService"/>
+    <!-- SHOW LOADING SPINNER--> 
+    <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide" />
+    <div class="slds-m-around_medium">
+
+        <!-- SEARCH INPUT AND SEARCH BUTTON--> 
+         
+        <!-- Mobile-->
+        <aura:if isTrue="{! $Browser.formFactor =='PHONE'}">
+            <!--Filter Modal-->
+            <aura:if  isTrue="{!v.isOpen}">
+                <div class="modal-header slds-modal__header slds-size_full">
+                    <h4 class="title slds-text-heading--medium">Rechercher</h4>
+                </div>
+                
+                <div  style="padding:1px;">
+                    
+                    <div data-value="name" >
+                            <lightning:input
+                                             aura:id="name"
+                                             name="name"
+                                             label="Nom"
+                                             value="{!v.name}"
+                                             />
+                        </div>
+                    <div data-value="societe">
+                            <lightning:input
+                                             aura:id="societe"
+                                             name="societe"
+                                             label="Société"
+                                             value="{!v.societe}"
+                                             /></div>
+                    
+                       
+                        <div data-value="departement" >
+                            <lightning:input
+                                             aura:id="departement"
+                                             name="departement"
+                                             label="Département"
+                                             value="{!v.departement}"
+                                             /></div>
+                    
+                        <div data-value="city" >
+                            <lightning:input
+                                             aura:id="city"
+                                             name="city"
+                                             label="Ville"
+                                             value="{!v.city}"
+                                             /></div>
+                        
+                        
+                        <div data-value="metier" >
+                            <lightning:select name="metier" label="Métier" aura:id="metier" value="{!v.metier}" >
+                                <option text="Sélectionner ..." value="" selected= "true" />
+                                <aura:iteration items="{!v.listMetier}" var="option">
+                                    <option text="{!option}" value="{!option}"/>
+                                </aura:iteration>
+                            </lightning:select>
+                    </div>
+
+                    
+                </div>
+                
+                <div class="modal-footer slds-modal__footer ">
+                        <!--<lightning:button label="Annuler" onclick="{! c.closeModel}"/>-->
+                   
+                        <lightning:button variant="brand" label="Appliquer" onclick="{! c.appliquerFiltre}"/>
+                    
+                </div>
+                <!--Fin Filter Modal-->
+                <aura:set attribute="else">
+                    <div >
+                        <div>
+                    <lightning:card  class="slds-text-heading_small slds-card_boundary " title="{! 'Adhérents ('+v.TotalNumberOfRecord+')'}" iconName="standard:avatar" >
+                        
+                            
+                        <p class="slds-p-horizontal_small">
+                            <!-- ERROR MESSAGE IF NO RECORDS FOUND--> 
+                            <aura:if isTrue="{!v.Message}">
+                                Aucun enregistrement trouvé...
+                            </aura:if>
+                            <aura:if isTrue="{!v.MessageEmpty}">
+                                Utiliser au moins un filtre pour lancer la recherche.
+                            </aura:if>
+                            <!--Result-->
+                            <aura:iteration items="{!v.searchResult}" var="u" indexVar="count">
+                                
+                                <div  class="slds-p-left_x-small slds-p-top_small slds-align_absolute-left slds-gutters slds-border_top">
+                                    
+                                    <!--details -->
+
+                                        
+                                            <lightning:button class =" slds-button_full-width"  variant="base" label="" onclick="{! c.redirectfromMobile }" value="{!u.Id}"><h2>{!u.FirstName+' '+u.LastName+' ('+u.Contact.Account.Departement__c+')'}</h2></lightning:button>
+                                            <br/>
+                                            <p class ="slds-text-body_small">Société : {!u.Contact.Account.Name2__c}</p><br/>
+                                      
+                                   
+                                </div>
+                            </aura:iteration>
+                        </p>
+                    </lightning:card>
+                            </div>
+                        <div  class=" slds-var-p-around_small" style="position:fixed; bottom:0px; height:20%; right:0px; overflow:hidden;" >
+                    <!--<lightning:button label="Rechercher" variant="brand" onclick="{! c.showFilterModal }"/>-->
+                    <lightning:buttonIcon  iconName="utility:search" variant="brand" size = "large" alternativeText="Nouvelle Recherche" onclick="{! c.showFilterModal }" />
+                            
+                        </div>
+                    </div>                    
+                </aura:set></aura:if>
+           <!--Desktop--> 
+            <aura:set attribute="else">
+                    
+
+                   
+                
+                <!-- ERROR MESSAGE IF NOT RECORDS FOUND--> 
+                <aura:if isTrue="{!v.Message}">
+                    <div class="slds-notify_container slds-is-relative">
+                        <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                            <div class="slds-notify__content">
+                                <h2 class="slds-text-heading_small">Aucun enregistrement trouvé...</h2>
+                            </div>
+                        </div>
+                    </div>
+                </aura:if>
+                <!-- ERROR MESSAGE IF NO FILTER--> 
+                <aura:if isTrue="{!v.MessageEmpty}">
+                    <div class="slds-notify_container slds-is-relative">
+                        <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                            <div class="slds-notify__content">
+                                <h2 class="slds-text-heading_small">Utiliser au moins un filtre pour lancer la recherche.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </aura:if>
+                
+                
+                
+                <!--filter-->
+                <!-- affiner la recherche-->
+                
+                <lightning:layout horizontalAlign="center"   verticalAlign="end">
+                    
+                    <lightning:layoutItem  padding="around-small">
+                        <div data-value="name" >
+                            <lightning:input
+                                             aura:id="name"
+                                             name="name"
+                                             label="Nom"
+                                             />
+                        </div>           
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div data-value="societe" >
+                            <lightning:input
+                                             aura:id="societe"
+                                             name="societe"
+                                             label="Société"
+                                             
+                                             /></div>
+                    </lightning:layoutItem>
+                    
+                    <lightning:layoutItem padding="around-small">
+                        <div data-value="departement">
+                            <lightning:input
+                                             aura:id="departement"
+                                             name="departement"
+                                             label="Département"
+                                             /></div>
+                    </lightning:layoutItem>
+                    
+                    <lightning:layoutItem padding="around-small">
+                        <div data-value="city" >
+                            <lightning:input
+                                             aura:id="city"
+                                             name="city"
+                                             label="Ville"
+                                             /></div>
+                    </lightning:layoutItem>
+                    
+                     
+                    <lightning:layoutItem padding="around-small">
+                        <div data-value="metier">
+                            <lightning:select name="metier" label="Métier" aura:id="metier" >
+                                <option text="Sélectionner ..." value="" selected= "true" />
+                                <aura:iteration items="{!v.listMetier}" var="option">
+                                    <option text="{!option}" value="{!option}"/>
+                                </aura:iteration>
+                            </lightning:select>
+                            </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div  class="slds-align_absolute-center">
+                            <lightning:button  onclick="{!c.appliquerFiltre}"
+                                      variant="brand"
+                                      label="Rechercher"/> 
+                        </div>
+                    </lightning:layoutItem>
+                    
+                    
+                    
+                   
+                    
+                </lightning:layout>
+                <!-- TOTAL RECORDS BADGES--> 
+                    
+                <div class="slds-m-around_x-small">
+                    <lightning:badge label="{!v.TotalNumberOfRecord}" />
+                        </div>
+
+                <!-- TABLE CONTENT--> 
+                <div class="slds">
+                    <table class="slds-table slds-table_bordered ">
+                        <thead>
+                            <tr class="slds-text-title_caps slds-text-heading--label">
+                                <th scope="col" class="slds-truncate" title="S.no" style="width: min-content;white-space: pre-wrap;">
+                                    <div >S.no</div>
+                                </th>
+                                <th class="slds-truncate" style="width: min-content;white-space: pre-wrap;" scope="col">
+                                    <div  title="Name" >Nom</div>
+                                </th>
+                                <th class="slds-truncate" scope="col" style="width: min-content;white-space: pre-wrap;">
+                                    <div  title="Phone">Téléphone</div>
+                                </th>
+                               
+                                <th class="slds-truncate" scope="col" style="width: min-content;white-space: pre-wrap;">
+                                    <div  title="Phone">Société</div>
+                                </th>
+                                <th class="slds-truncate" scope="col" style="width: min-content;white-space: pre-wrap;">
+                                    <div title="Dep">Département</div>
+                                </th>
+                                <th class="slds-truncate" style="width: min-content;white-space: pre-wrap;" scope="col">
+                                    <div  title="city" >Ville</div>
+                                </th>
+                               <!--  <th class="slds-truncate" style="width: min-content;white-space: pre-wrap;" scope="col">
+                                    <div  title="city" >Région</div>
+                                </th>-
+                               
+                                <th class="slds-truncate" style="width: min-content;white-space: pre-wrap;" scope="col">
+                                    <div title="region" >Métier</div>
+                                </th>-->
+                                <th class="slds-truncate" style="width: min-content;white-space: pre-wrap;" scope="col">
+                                    <div title="region" >Membre d’un Cercle Confort Habitat</div>
+                                </th>
+                                <th class="slds-truncate" style="width: min-content;white-space: pre-wrap;" scope="col">
+                                    <div title="region" >Membre du Club Mobilité Electrique </div>
+                                </th>
+                                <th class="slds-truncate" style="width: min-content;white-space: pre-wrap;" scope="col">
+                                    <div title="region" >Membre du Club Partenaire Economies d’Énergie d’EDF</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <!--### display all records of searchResult attribute by aura:iteration ###-->
+                            <aura:iteration items="{!v.searchResult}" var="u" indexVar="count">
+                                <tr class="slds-hint-parent" data-myid="{!u.Id}" onclick="{! c.redirectfromDesktop}">
+                                    <td class="slds-truncate" style="width: min-content;white-space: pre-wrap;">
+                                        <div >{!count + 1}</div>
+                                    </td>
+                                    <td class="slds-is-sortable slds-truncate" style="width: min-content;white-space: pre-wrap; ">
+                                        <div>
+                                            
+                                            <lightning:button  class ="slds-button_full-width " value="{!u}" variant="base" label="{!u.FirstName+' '+u.LastName}" onclick="">
+                                            </lightning:button>
+                                        </div>
+                                    </td>
+                                    <td class="slds-truncate" style=" width: min-content;white-space: pre-wrap;">
+                                        <aura:if isTrue="{!u.Portail_RGPD__c}">
+                                        <div >
+                                            {!u.Contact.MobilePhone}
+                                            <aura:if isTrue="{!(empty(u.Contact.MobilePhone))}">
+                                               {!u.Contact.Phone} 
+                                            </aura:if>
+                                        </div>
+                                            <aura:set attribute="else">
+                                                {!u.Contact.Account.Phone}
+                                            </aura:set>
+                                        </aura:if>
+                                    </td>
+                                    
+                                    <td class="slds-truncate" style=" width: min-content;white-space: pre-wrap;">
+                                        <div >{!u.Contact.Account.Name2__c}</div>
+                                    </td>
+                                    <td class="slds-truncate" style=" width: min-content;white-space: pre-wrap;">
+                                        <div >{!u.Contact.Account.Departement__c}</div>
+                                    </td>
+                                    <td class="slds-truncate" style=" width: min-content;white-space: pre-wrap;">
+                                        <div >{!u.Contact.Account.BillingCity}</div>
+                                    </td>
+                                    <!--<td class="slds-truncate" style=" width: min-content;white-space: pre-wrap;">
+                                        <div >{!u.Contact.Account.BillingState}</div>
+                                    </td>
+                                    
+                                    <td class="slds-truncate" style=" width: min-content;white-space: pre-wrap;">
+                                        <div >{!u.Contact.Account.Metier_de_reference_principal__c}</div>
+                                    </td>-->
+                                    <td class="slds-truncate" style=" width: min-content;white-space: pre-wrap;">
+                                        <div >
+                                            <ui:outputCheckbox class="result" aura:id="checkResult" value="{!u.Contact.Account.Club_CCH__c}" />
+                                            </div>
+                                    </td>
+                                    <td class="slds-truncate" style=" width: min-content;white-space: pre-wrap;">
+                                        <div >
+                                            <ui:outputCheckbox class="result" aura:id="checkResult" value="{!u.Contact.Account.Club_Mobilit_Electrique__c}" />
+                                            </div>
+                                    </td>
+                                    <td class="slds-truncate" style=" width: min-content;white-space: pre-wrap;">
+                                        <div >
+                                            <ui:outputCheckbox class="result" aura:id="checkResult" value="{!u.Contact.Account.ClubPEE__c}" />
+                                            </div>
+                                    </td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </aura:set></aura:if>
+    </div>
+    
+    
+</aura:component>

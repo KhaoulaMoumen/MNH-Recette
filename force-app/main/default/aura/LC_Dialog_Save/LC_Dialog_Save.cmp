@@ -1,0 +1,21 @@
+<aura:component extends="c.LC_Dialog" access="global">
+
+    <aura:registerEvent name="onSave" type="c:LE_Dialog_Event" access="global" />
+    <aura:registerEvent name="onCancel" type="c:LE_Dialog_Event" access="global" />
+
+    <aura:attribute name="saveLabel"  type="String" default="{! $Label.c.Enregistrer }" access="global"></aura:attribute>
+    <aura:attribute name="cancelLabel"  type="String" default="{! $Label.c.Annuler }" access="global"></aura:attribute>
+
+    <aura:attribute name="saveVariant"  type="String" default="brand" access="global"></aura:attribute>
+    <aura:attribute name="cancelVariant"  type="String" default="neutral" access="global"></aura:attribute>
+
+    <aura:set attribute="actions">
+        <lightning:button variant="{!v.cancelVariant}" name="cancel" label="{!v.cancelLabel}" onclick="{! c.handleCancelClick }" />
+        <lightning:button variant="{!v.saveVariant}" name="save" label="{!v.saveLabel}" onclick="{! c.handleSaveClick }" />
+    </aura:set>
+
+    <aura:set attribute="body">
+        {!v.body}
+    </aura:set>
+
+</aura:component>

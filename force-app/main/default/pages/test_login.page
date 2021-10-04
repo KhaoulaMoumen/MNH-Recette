@@ -1,0 +1,18 @@
+<apex:page showHeader="false" sidebar="false" lightningStylesheets="true" >
+    <apex:includeLightning />
+    <script src="https://preprod-espacepro-synerciel.cs100.force/lightning/lightning.out.js"></script>
+    <div id="lightning" />
+    
+    <script>
+    $Lightning.use("c:test", function() {
+        $Lightning.createComponent("c:loginForm",
+                                   {
+                                   },
+                                   "lightning",
+                                   function(cmp) {
+                                       // do some stuff
+                                   },
+                                  'https://synerciel.my.salesforce.com/ ');
+    });
+    </script>
+</apex:page>

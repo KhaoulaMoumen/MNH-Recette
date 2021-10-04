@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global">
+    <c:LC_Configuration_WS />
+    <br/>
+    <c:LC_Configuration_Package />
+</aura:component>
